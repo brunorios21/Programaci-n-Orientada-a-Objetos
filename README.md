@@ -1,6 +1,6 @@
 # Programaci-n-Orientada-a-Objetos
 
-Este repositorio contiene las diferentes clases, ejercicios y proyectos desarrollados durante la cursada de **Programación Orientada a Objetos** en la **Universidad Nacional de José C. Paz (UNPAZ)**.
+Este repositorio contiene las clases, ejercicios y proyectos desarrollados durante la cursada de **Programación Orientada a Objetos** en la **Universidad Nacional de José C. Paz (UNPAZ)**.
 
 ## Información Académica
 * **Institución:** Universidad Nacional de José C. Paz (UNPAZ)
@@ -9,28 +9,29 @@ Este repositorio contiene las diferentes clases, ejercicios y proyectos desarrol
 
 ---
 
-## Tecnologías y Conceptos
+## Entorno de Desarrollo y Tecnologías
 
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-[![POO](https://img.shields.io/badge/Paradigma-POO-blue?style=for-the-badge)](https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/Object-oriented_programming)
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![Eclipse IDE](https://img.shields.io/badge/Eclipse%20IDE-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white)](https://www.eclipse.org/ide/)
+[![POO](https://img.shields.io/badge/Paradigma-POO-red?style=for-the-badge)](https://docs.oracle.com/javase/tutorial/java/concepts/index.html)
 
 ---
 
 ## Temas de la Cursada
 *El contenido se actualiza semanalmente conforme al avance de las clases del profesor Molina.*
 
-### Conceptos clave:
-* [x] Definición de clases y objetos.
+### Conceptos clave en Java:
+* [x] Configuración del Workspace en Eclipse.
+* [ ] Creación de Proyectos, Paquetes y Clases.
 * [ ] Pilares de la POO: Abstracción, Encapsulamiento, Herencia y Polimorfismo.
-* [ ] Modelado de clases y diagramas UML.
-* [ ] Implementación de métodos y constructores.
+* [ ] Manejo de Colecciones y Excepciones.
 
 ---
 
-## Instalación y Ejecución
+## Configuración y Uso
 
-Para clonar y trabajar localmente con los archivos de este repositorio:
+Para trabajar con este repositorio en Eclipse:
 
-```bash
-git clone [https://github.com/TU_USUARIO/Programaci-n-Orientada-a-Objetos.git](https://github.com/TU_USUARIO/Programaci-n-Orientada-a-Objetos.git)
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/TU_USUARIO/Programaci-n-Orientada-a-Objetos.git](https://github.com/TU_USUARIO/Programaci-n-Orientada-a-Objetos.git)
