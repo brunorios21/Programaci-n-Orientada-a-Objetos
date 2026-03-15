@@ -9,7 +9,6 @@ public class Main {
         Autor autor1 = new Autor();
         autor1.setNombre("Pablo");
         autor1.setApellido("Picasso");
-        // autor1.setDni(43986432); // Asegúrate de tener este método en la clase Autor
 
         // --- PASO 2: CREAR EL LIBRO ---
         // Aquí usamos la clase Libro, no la clase Autor
