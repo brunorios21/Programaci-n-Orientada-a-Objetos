@@ -17,7 +17,6 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    // --- MÉTODOS QUE LE FALTAN A TU CÓDIGO ---
 
     public double getSaldo() {
         return saldo;
