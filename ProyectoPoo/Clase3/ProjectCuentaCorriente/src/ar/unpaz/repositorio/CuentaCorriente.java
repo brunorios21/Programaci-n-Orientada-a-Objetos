@@ -23,7 +23,6 @@ public class CuentaCorriente extends Cuenta {
         this.descubierto = descubierto;
     }
 
-    // Lógica de extracción (Líneas 27 y 28 ahora funcionan)
     public void extraer(double monto) {
         if (monto <= (getSaldo() + descubierto)) {
             setSaldo(getSaldo() - monto);
