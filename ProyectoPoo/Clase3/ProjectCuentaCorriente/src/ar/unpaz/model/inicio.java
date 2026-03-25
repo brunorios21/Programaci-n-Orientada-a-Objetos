@@ -14,7 +14,7 @@ public class inicio {
         
         System.out.println("--- Contenido del archivo ---");
         
-        // 3. Recorrer la lista de objetos (Línea 17 corregida)
+        // 3. Recorrer la lista de objetos 
         for (CuentaCorriente s : listadoDeCuentas) {
             // Usamos el getter para mostrar el nombre del titular
             System.out.println("Titular: " + s.getTitular());
