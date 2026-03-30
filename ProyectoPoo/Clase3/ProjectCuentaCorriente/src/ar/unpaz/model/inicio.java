@@ -9,7 +9,7 @@ public class inicio {
         // 1. Instanciar el lector del repositorio
         LecturaArchivo lecturaDeArchivo = new LecturaArchivo();
         
-        // 2. RECUPERAR LA LISTA (Línea 12 corregida)
+        // 2. RECUPERAR LA LISTA 
         List<CuentaCorriente> listadoDeCuentas = lecturaDeArchivo.leerArchivo();
         
         System.out.println("--- Contenido del archivo ---");
