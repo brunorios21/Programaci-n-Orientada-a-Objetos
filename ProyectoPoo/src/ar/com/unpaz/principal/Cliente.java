@@ -30,16 +30,32 @@ public class Cliente {
     }
 
     // Getters y Setters estándar
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombre() { 
+        return nombre; 
+    }
+    public void setNombre(String nombre) { 
+        this.nombre = nombre; 
+    }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public String getApellido() { 
+        return apellido; 
+    }
+    public void setApellido(String apellido) { 
+        this.apellido = apellido; 
+    }
 
-    public int getDNI() { return dni; }
-    public void setDNI(int dni) { this.dni = dni; }
+    public int getDNI() { 
+        return dni; 
+    }
+    public void setDNI(int dni) { 
+        this.dni = dni; 
+    }
 
-    public Contacto getContacto() { return contacto; }
-    public void setContacto(Contacto contacto) { this.contacto = contacto; }
+    public Contacto getContacto() { 
+        return contacto; 
+    }
+    public void setContacto(Contacto contacto) { 
+        this.contacto = contacto; 
+    }
 }
 
