@@ -272,54 +272,207 @@ public class CuentaAhorros extends Cuenta {
 }
 ```
 
-## Aplicación Práctica: Sistema Bancario
+## Ejercicio Práctico: Lectura de Archivo y Gestión de Cuentas
 
-En el ejemplo del sistema bancario, se identificaron atributos y métodos comunes entre diferentes tipos de cuentas. Inicialmente, había duplicación de código que se resolvió mediante herencia.
+Este ejercicio demuestra la aplicación práctica de los conceptos de POO mediante la lectura de un archivo de texto que contiene información de cuentas corrientes, la creación de objetos y el manejo de colecciones.
 
-### Problema Inicial
-- Código duplicado en clases `CuentaCorriente` y `CuentaAhorros`
-- Atributos y métodos repetidos
-- Dificultad de mantenimiento
+### Estructura del Proyecto
+- **Package `ar.unpaz.model`**: Contiene la clase principal de ejecución
+- **Package `ar.unpaz.repositorio`**: Contiene las clases de dominio y acceso a datos
 
-### Solución con Herencia
-- Creación de clase base `Cuenta` con funcionalidad común
-- Especialización mediante subclases
-- Reutilización de código existente
+### Archivo de Datos
+El archivo `cuenta_corrientes.txt` debe tener el formato:
+```
+Titular;NúmeroCuenta;Saldo;Descubierto
+Juan Pérez;CC001;1500.50;500.00
+María García;CC002;2500.75;1000.00
+```
 
-### Implementación Completa
+### Implementación
+
+#### Clase Base: Cuenta
 
 ```java
-import java.util.ArrayList;
+package ar.unpaz.repositorio;
 
-public class Banco {
-    private ArrayList<Cuenta> cuentas;
+public class Cuenta {
+    // Atributos protegidos para que las clases hijas los vean
+    protected String titular;
+    protected String numeroCuenta;
+    protected double saldo;
 
-    public Banco() {
-        this.cuentas = new ArrayList<>();
+    // Constructor vacío (necesario para el super() de la hija)
+    public Cuenta() {
     }
 
-    public void agregarCuenta(Cuenta cuenta) {
-        this.cuentas.add(cuenta);
+    // Constructor con parámetros
+    public Cuenta(String titular, String numeroCuenta, double saldo) {
+        this.titular = titular;
+        this.numeroCuenta = numeroCuenta;
+        this.saldo = saldo;
     }
 
-    public void mostrarInformacionCuentas() {
-        for (Cuenta cuenta : this.cuentas) {
-            System.out.println("Cuenta: " + cuenta.getNumeroCuenta());
-            System.out.println("Titular: " + cuenta.getTitular());
-            System.out.println("Saldo: " + cuenta.getSaldo());
+    // Getters y setters
+    public double getSaldo() {
+        return saldo;
+    }
 
-            // Polimorfismo: diferentes comportamientos según el tipo
-            if (cuenta instanceof CuentaCorriente) {
-                CuentaCorriente cc = (CuentaCorriente) cuenta;
-                System.out.println("Límite de sobregiro: " + cc.getLimiteSobregiro());
-            } else if (cuenta instanceof CuentaAhorros) {
-                CuentaAhorros ca = (CuentaAhorros) cuenta;
-                System.out.println("Tasa de interés: " + ca.getTasaInteres() + "%");
-            }
-            System.out.println("---");
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+}
+```
+
+#### Clase Derivada: CuentaCorriente
+
+```java
+package ar.unpaz.repositorio;
+
+public class CuentaCorriente extends Cuenta {
+    
+    private double descubierto;
+
+    // Constructor vacío
+    public CuentaCorriente() {
+        super(); 
+    }
+
+    // Constructor con parámetros
+    public CuentaCorriente(String titular, String numeroCuenta, double saldo, double descubierto) {
+        super(titular, numeroCuenta, saldo); // Envía los datos a la clase Cuenta
+        this.descubierto = descubierto;
+    }
+
+    public double getDescubierto() {
+        return descubierto;
+    }
+
+    public void setDescubierto(double descubierto) {
+        this.descubierto = descubierto;
+    }
+
+    public void extraer(double monto) {
+        if (monto <= (getSaldo() + descubierto)) {
+            setSaldo(getSaldo() - monto);
+        } else {
+            System.out.println("Error: Fondos insuficientes.");
         }
     }
 }
+```
+
+#### Clase de Acceso a Datos: LecturaArchivo
+
+```java
+package ar.unpaz.repositorio;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import ar.unpaz.repositorio.CuentaCorriente;
+
+public class LecturaArchivo {
+
+    // El método ahora devuelve una lista de objetos CuentaCorriente
+    public List<CuentaCorriente> leerArchivo() {
+        // 1. Inicializar la lista de objetos
+        List<CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
+        
+        // 2. Apuntar al archivo físico
+        File sFile = new File("cuenta_corrientes.txt");
+        
+        try {
+            FileReader sFileReader = new FileReader(sFile);
+            BufferedReader buffer = new BufferedReader(sFileReader);
+            String linea = "";
+            
+            // 3. Ciclo para leer cada renglón
+            while ((linea = buffer.readLine()) != null) {
+                // Separar los datos por punto y coma
+                String[] array = linea.split(";");
+                
+                // Crear instancia de CuentaCorriente y cargar sus datos
+                CuentaCorriente cc = new CuentaCorriente();
+                cc.setTitular(array[0]);
+                cc.setNumeroCuenta(array[1]);
+                
+                // Convertir Strings a Double para el saldo y el descubierto
+                cc.setSaldo(Double.parseDouble(array[2]));
+                cc.setDescubierto(Double.parseDouble(array[3]));
+                
+                // Guardar el objeto en la lista
+                cuentasCorrientes.add(cc);
+            }
+            buffer.close(); // Cerrar el flujo de datos
+        } catch (Exception e) {
+            System.out.println("Error al leer: " + e.getMessage());
+        }
+        
+        return cuentasCorrientes; // Retornar la lista cargada
+    }
+}
+```
+
+#### Clase Principal: Inicio
+
+```java
+package ar.unpaz.model;
+
+import ar.unpaz.repositorio.LecturaArchivo;
+import ar.unpaz.repositorio.CuentaCorriente; 
+import java.util.List;
+
+public class inicio {
+    public static void main(String[] args) {
+        // 1. Instanciar el lector del repositorio
+        LecturaArchivo lecturaDeArchivo = new LecturaArchivo();
+        
+        // 2. RECUPERAR LA LISTA 
+        List<CuentaCorriente> listadoDeCuentas = lecturaDeArchivo.leerArchivo();
+        
+        System.out.println("--- Contenido del archivo ---");
+        
+        // 3. Recorrer la lista de objetos 
+        for (CuentaCorriente s : listadoDeCuentas) {
+            // Usamos el getter para mostrar el nombre del titular
+            System.out.println("Titular: " + s.getTitular());
+        }
+    }
+}
+```
+
+### Conceptos Aplicados en el Ejercicio
+
+- **Herencia**: `CuentaCorriente` hereda de `Cuenta`
+- **Encapsulamiento**: Uso de getters y setters para acceder a atributos
+- **Listas**: `ArrayList<CuentaCorriente>` para almacenar objetos
+- **Lectura de Archivos**: Procesamiento de datos desde archivo de texto
+- **Instanciación Dinámica**: Creación de objetos desde datos leídos
+- **Manejo de Excepciones**: Try-catch para errores de lectura
+
+### Salida Esperada
+```
+--- Contenido del archivo ---
+Titular: Juan Pérez
+Titular: María García
 ```
 
 ## Conclusión
