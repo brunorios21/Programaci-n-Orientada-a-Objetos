@@ -24,8 +24,7 @@ Cuando distintas clases no relacionadas entre sí necesitan compartir un mismo c
 Un sistema de empleados: Empleado como clase abstracta, y después EmpleadoTiempoCompleto o EmpleadoPorHora. Todos comparten datos y comportamientos comunes.
 ## 10)¿Por qué las interfaces favorecen el desacoplamiento del sistema?
 Porque permiten programar contra una idea (la interfaz) y no contra una implementación concreta. Eso hace que puedas cambiar la implementación sin afectar el resto del sistema.
-## Analice el siguiente caso:
-Un sistema tiene clases: Perro, Gato, Auto.
+## Analice el siguiente caso: Un sistema tiene clases: Perro, Gato, Auto.
 Todas pueden “emitir sonido”.
 Usaría una interfaz. Porque son objetos totalmente distintos entre sí, no tiene sentido que hereden de una misma clase, pero sí que compartan la capacidad de “emitir sonido”.
 ## 11)¿Usaría interfaz o clase abstracta? Justifique.
