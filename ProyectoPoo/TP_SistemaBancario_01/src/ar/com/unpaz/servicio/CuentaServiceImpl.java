@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * PUNTO 4 DEL ENUNCIADO: Implementación del Servicio
- * Esta clase administra la colección de objetos [cite: 119, 121]
+ * Esta clase administra la colección de objetos 
  */
 public class CuentaServiceImpl implements CuentaService {
     // Usamos ArrayList para almacenar múltiples objetos dinámicamente [cite: 71, 74, 81]
