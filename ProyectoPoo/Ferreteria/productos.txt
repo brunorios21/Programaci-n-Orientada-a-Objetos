@@ -1,0 +1,5 @@
+1;Martillo de Galpón;1500.50;10
+2;Destornillador Phillips;850.00;25
+3;Pinza de Fuerza;2200.00;5
+4;Cinta Métrica 5m;1200.00;15
+5;Pack Clavos 2 pulgadas;500.00;100
