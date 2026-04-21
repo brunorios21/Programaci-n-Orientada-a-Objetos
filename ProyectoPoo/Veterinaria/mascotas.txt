@@ -1,0 +1,4 @@
+Mascota;lelo;perro;5;L
+Mascota;Lola;gato;3;M
+Mascota;Toby;perro;2;M
+Mascota;Mia;gato;4;L
